@@ -33,7 +33,7 @@ public class JMSConsumerSample {
 			//启动连接
 			conn.start();
 			//创建session ，ActiveMQSession
-			session = conn.createSession(true, Session.AUTO_ACKNOWLEDGE);
+			session = conn.createSession(false, Session.AUTO_ACKNOWLEDGE);
 			//创建队列
 			destination = session.createQueue("testQueue");
 			//创建消费者，ActiveMQMessageConsumer, AMQ界面上才会显示挂上Consumer
@@ -45,21 +45,21 @@ public class JMSConsumerSample {
 		} catch (JMSException e) {
 			e.printStackTrace();
 		}finally{//接收端不要关session和connection
-//        	if(session!=null){
-//        		try {
-//					session.close();
-//				} catch (JMSException e) {
-//					e.printStackTrace();
-//				}
-//        	}
-//			if(conn!=null){
-//				try {
-//					conn.stop();
-//					conn.close();
-//				} catch (JMSException e) {
-//					e.printStackTrace();
-//				}
-//			}
+        	if(session!=null){
+        		try {
+					session.close();
+				} catch (JMSException e) {
+					e.printStackTrace();
+				}
+        	}
+			if(conn!=null){
+				try {
+					conn.stop();
+					conn.close();
+				} catch (JMSException e) {
+					e.printStackTrace();
+				}
+			}
 		}
 	}
 	

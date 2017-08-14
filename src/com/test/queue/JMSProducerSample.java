@@ -21,7 +21,7 @@ public class JMSProducerSample {
 //    private static final String BROKEURL = ActiveMQConnection.DEFAULT_BROKER_URL;
     private static final String BROKEURL = "tcp://localhost:61616";//"tcp://192.168.214.129:61616"; //可以多个url用,隔开
     //发送的消息数量
-    private static final int SENDNUM = 5;
+    private static final int SENDNUM = 3;
     
     public static void main(String[] args) {
     	//连接工厂
@@ -39,7 +39,7 @@ public class JMSProducerSample {
             //通过连接工厂获取连接
             conn = connectionFactory.createConnection();
             //启动连接
-            conn.start();
+//            conn.start();//不启动也能发送...
             //创建session
             session = conn.createSession(true, Session.AUTO_ACKNOWLEDGE);
             //创建一个名称为HelloWorld的消息队列
